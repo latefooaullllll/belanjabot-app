@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ theme.name }} &middot; BelanjaBot{% endblock %}
+{% block color %}{{ theme.color }}{% endblock %}
+{% block header_extra %}
+<div class="header-actions">
+  <a class="btn-ghost" href="{{ url_for('admin_page', theme_id=theme.id) }}">Statistik</a>
+  <button id="btn-clear" class="btn-ghost" type="button">Hapus riwayat</button>
+</div>
+{% endblock %}
+{% block content %}
+<section class="chat-card">
+  <div class="chat-header">
+    <div class="avatar">{{ theme.avatar }}</div>
+    <div class="chat-title"><h1>{{ theme.bot_name }}</h1><p>{{ theme.name }}</p></div>
+    <label class="learn-toggle"><input type="checkbox" id="learn-mode"> Mode belajar</label>
+  </div>
+  <div id="messages" class="messages" aria-live="polite"></div>
+  <div class="suggestions">
+    {% for s in theme.suggestions %}<button type="button" class="chip">{{ s }}</button>{% endfor %}
+  </div>
+  <form id="chat-form" class="chat-form" autocomplete="off">
+    <input id="chat-input" type="text" placeholder="Ketik pesan..." maxlength="500" required>
+    <button type="submit">Kirim</button>
+  </form>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+  const THEME = {
+    id: {{ theme.id | tojson }},
+    avatar: {{ theme.avatar | tojson }},
+    greeting: {{ theme.greeting | tojson }}
+  };
+</script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

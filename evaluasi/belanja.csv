@@ -1,0 +1,53 @@
+kalimat,intent
+selamat pagi kak,sapaan
+assalamualaikum min,sapaan
+permisi mau tanya,sapaan
+bantuan dong,menu_bantuan
+fitur kamu apa aja,menu_bantuan
+tampilkan menu,menu_bantuan
+minta contoh soalnya,contoh_soal
+ada contoh pertanyaan gak,contoh_soal
+baju seharga 150.000 diskon 20% jadi berapa,hitung_diskon
+sepatu Rp300.000 kena diskon 30 persen bayar berapa,hitung_diskon
+harga akhir tas 250rb diskon 10%,hitung_diskon
+diskon 25% dari Rp80.000 hematnya berapa,hitung_potongan
+hemat berapa kalau diskon 15% dari 200rb,hitung_potongan
+potongan harga 50% dari Rp120.000 berapa,hitung_potongan
+beli batik Rp80.000 dijual Rp100.000 untung atau rugi,hitung_untung_rugi
+modal 50rb dijual 45rb,hitung_untung_rugi
+saya jual tas Rp120.000 modalnya Rp90.000,hitung_untung_rugi
+belanja Rp47.500 bayar Rp50.000 kembaliannya berapa,hitung_kembalian
+total 85rb bayar pakai 100rb kembaliannya,hitung_kembalian
+uang kembali kalau belanja 23.000 bayar 50.000,hitung_kembalian
+oke makasih banyak,terima_kasih
+mantap terima kasih ya,terima_kasih
+kamu ini bot apa sih,identitas
+siapa nama kamu,identitas
+dadah sampai nanti,penutup
+sudah cukup bye,penutup
+siapa presiden indonesia,fallback
+resep rendang padang,fallback
+cuaca hari ini bagaimana,fallback
+harga tiket pesawat ke bali,fallback
+kasih tips hemat dong buat belanja bulanan,tips_hemat_belanja
+gimana caranya biar belanja gak boros,tips_hemat_belanja
+trik tawar menawar di pasar tradisional,cara_menawar
+cara nawar harga baju di pasar,cara_menawar
+gimana cara nentuin harga jual dagangan,tips_harga_jual
+tips berjualan di pasar,tips_harga_jual
+gimana cara tahu diskon ini asli,cek_diskon_asli
+hati hati diskon palsu,cek_diskon_asli
+gimana cara atur uang belanja bulanan,anggaran_belanja
+tips membuat anggaran belanja mingguan,anggaran_belanja
+gimana sih rumus hitung diskon itu,rumus_diskon
+jelaskan cara menghitung persen diskon secara manual,rumus_diskon
+gimana rumus menghitung untung rugi,rumus_untung_rugi
+bedanya laba sama rugi apa,rumus_untung_rugi
+modal itu artinya apa,istilah_jual_beli
+jelaskan istilah margin dan markup,istilah_jual_beli
+tips biar gak ketipu belanja online,belanja_online_aman
+gimana tahu penjual online terpercaya,belanja_online_aman
+enaknya belanja ke pasar jam berapa,tips_belanja_pasar
+cara milih sayur dan buah yang segar di pasar,tips_belanja_pasar
+kenapa struk belanja perlu dicek,cek_struk
+harga di kasir kok beda sama di rak,cek_struk

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Statistik {{ theme.name }}{% endblock %}
+{% block color %}{{ theme.color }}{% endblock %}
+{% block content %}
+<section class="admin">
+  <h1>{{ theme.avatar }} Statistik &middot; {{ theme.name }}</h1>
+  <p class="muted">Temukan pertanyaan yang belum dipahami bot, lalu tambahkan polanya ke
+    <code>themes/{{ theme.id }}.json</code>. Ambang saat ini: {{ threshold }}.</p>
+  <div class="stat-grid">
+    <div class="stat"><span class="stat-num">{{ summary.total }}</span><span>pertanyaan</span></div>
+    <div class="stat"><span class="stat-num">{{ summary.persen_dikenali }}%</span><span>dikenali</span></div>
+    <div class="stat"><span class="stat-num">{{ summary.tidak_dikenali }}</span><span>tidak dikenali</span></div>
+    <div class="stat"><span class="stat-num">{{ summary.sesi }}</span><span>pengunjung (sesi)</span></div>
+  </div>
+  <h2>Jumlah pertanyaan per intent</h2>
+  {% if stats %}
+  <table class="table">
+    <thead><tr><th>Intent</th><th>Jumlah</th><th>Proporsi</th></tr></thead>
+    <tbody>
+      {% for s in stats %}
+      <tr><td>{{ s.intent }}</td><td>{{ s.jumlah }}</td>
+        <td><div class="bar"><span style="width: {{ (100 * s.jumlah / summary.total) | round(1) }}%"></span></div></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="muted">Belum ada percakapan untuk tema ini.</p>{% endif %}
+  <h2>Pertanyaan yang tidak dikenali (terbaru)</h2>
+  {% if unknown %}
+  <table class="table">
+    <thead><tr><th>Pertanyaan</th><th>Skor tertinggi</th><th>Waktu</th></tr></thead>
+    <tbody>
+      {% for u in unknown %}
+      <tr><td>{{ u.text }}</td><td>{{ "%.2f" | format(u.score or 0) }}</td><td>{{ u.created_at }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="muted">Tidak ada. Semua pertanyaan dikenali.</p>{% endif %}
+  <p><a href="{{ url_for('chat_page', theme_id=theme.id) }}">&larr; Kembali ke chat</a></p>
+</section>
+{% endblock %}

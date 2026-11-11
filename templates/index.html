@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Pilih Tema Chatbot</h1>
+  <p>Setiap tema memiliki basis pengetahuan, nama bot, dan warna tampilan sendiri.</p>
+</section>
+<section class="theme-grid">
+  {% for t in themes %}
+  <a class="theme-card" href="{{ url_for('chat_page', theme_id=t.id) }}" style="--card: {{ t.color }};">
+    <div class="theme-avatar">{{ t.avatar }}</div>
+    <h2>{{ t.name }}</h2>
+    <p>{{ t.description }}</p>
+    <span class="theme-meta">{{ t.intents | length }} intent &middot; bot: {{ t.bot_name }}</span>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}

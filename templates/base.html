@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}BelanjaBot{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="--primary: {% block color %}#0F766E{% endblock %};">
+  <header class="topbar">
+    <a href="{{ url_for('index') }}" class="brand">🛒 BelanjaBot</a>
+    {% block header_extra %}{% endblock %}
+  </header>
+  <main class="container">{% block content %}{% endblock %}</main>
+  <footer class="footer">Praktikum Aplikasi Web &middot; Flask</footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,358 @@
+{
+  "id": "belanja",
+  "name": "Hitung Belanja & Jual-Beli",
+  "bot_name": "BelanjaBot",
+  "avatar": "🛒",
+  "color": "#0F766E",
+  "description": "Teman hitung di pasar: diskon, untung-rugi, dan kembalian.",
+  "greeting": "Halo! Aku teman hitung belanja kamu. Mau hitung apa hari ini? (1) Diskon (2) Untung-Rugi (3) Kembalian",
+  "suggestions": [
+    "Baju Rp150.000 diskon 20%, bayar berapa?",
+    "Beli batik Rp80.000, dijual Rp100.000. Untung atau rugi?",
+    "Belanja Rp47.500, bayar Rp50.000, kembaliannya?",
+    "Diskon 25% dari Rp80.000, hematnya berapa?"
+  ],
+  "fallback": [
+    "Maaf, aku belum paham. Coba pilih topik: Diskon, Untung-Rugi, atau Kembalian.",
+    "Hmm, itu belum bisa kubantu. Aku jago hitung diskon, untung-rugi, dan kembalian. Coba kirim soalnya lengkap dengan angka, ya."
+  ],
+  "intents": [
+    {
+      "tag": "sapaan",
+      "patterns": [
+        "halo",
+        "selamat pagi",
+        "selamat siang",
+        "selamat sore",
+        "selamat malam",
+        "assalamualaikum",
+        "permisi"
+      ],
+      "responses": [
+        "Halo! Aku teman hitung belanja kamu. Mau hitung apa hari ini? (1) Diskon (2) Untung-Rugi (3) Kembalian",
+        "Hai! Aku {nama_bot}. Pilih ya: (1) Diskon (2) Untung-Rugi (3) Kembalian, atau langsung kirim soalnya."
+      ]
+    },
+    {
+      "tag": "menu_bantuan",
+      "patterns": [
+        "menu",
+        "bantuan",
+        "pilihan menu",
+        "fitur apa saja",
+        "cara pakai",
+        "cara menggunakan",
+        "bisa hitung apa saja"
+      ],
+      "responses": [
+        "Aku bisa bantu: (1) Diskon, (2) Untung-Rugi, (3) Kembalian. Aku juga bisa jelaskan rumus dan istilah jual-beli, serta kasih tips: hemat belanja, menawar, harga jual, cek diskon asli, anggaran, belanja di pasar, belanja online aman, dan cek struk. Ketik angkanya, kirim soal, atau tanya tipsnya.",
+        "Pilih topik: (1) Diskon (2) Untung-Rugi (3) Kembalian. Atau tanya, misalnya \"rumus diskon\", \"tips hemat belanja\", atau \"cara menawar\"."
+      ]
+    },
+    {
+      "tag": "hitung_diskon",
+      "handler": "diskon",
+      "patterns": [
+        "diskon",
+        "hitung diskon",
+        "harga akhir",
+        "harga setelah diskon",
+        "cara hitung diskon",
+        "bayar berapa setelah diskon",
+        "persen diskon"
+      ],
+      "responses": [
+        "Kirim harga barang dan persen diskonnya, ya. Contoh: \"Baju Rp150.000 diskon 20%, bayar berapa?\"",
+        "Untuk hitung diskon aku butuh dua angka: harga awal dan persen diskon."
+      ]
+    },
+    {
+      "tag": "hitung_potongan",
+      "handler": "potongan",
+      "patterns": [
+        "hemat",
+        "potongan",
+        "hitung potongan",
+        "hemat berapa",
+        "nominal potongan",
+        "berapa potongan harga",
+        "dihemat berapa"
+      ],
+      "responses": [
+        "Kirim harga barang dan persen diskonnya, nanti kuhitung nominal yang kamu hemat. Contoh: \"Diskon 25% dari Rp80.000, hematnya berapa?\"",
+        "Untuk hitung nominal hemat aku butuh harga awal dan persen diskon."
+      ]
+    },
+    {
+      "tag": "hitung_untung_rugi",
+      "handler": "untung_rugi",
+      "patterns": [
+        "untung",
+        "rugi",
+        "modal",
+        "dijual",
+        "hitung untung rugi",
+        "untung atau rugi",
+        "modal dan harga jual",
+        "cara hitung laba"
+      ],
+      "responses": [
+        "Kirim modal dan harga jualnya, ya. Contoh: \"Beli batik Rp80.000, dijual Rp100.000. Untung atau rugi?\"",
+        "Untuk hitung untung-rugi aku butuh modal dan harga jual."
+      ]
+    },
+    {
+      "tag": "hitung_kembalian",
+      "handler": "kembalian",
+      "patterns": [
+        "kembalian",
+        "hitung kembalian",
+        "uang kembali",
+        "bayar pakai",
+        "berapa kembalian",
+        "belanja bayar kembalian"
+      ],
+      "responses": [
+        "Kirim total belanja dan uang yang kamu bayarkan. Contoh: \"Belanja Rp47.500, bayar Rp50.000, kembaliannya?\"",
+        "Untuk hitung kembalian aku butuh total belanja dan uang bayar."
+      ]
+    },
+    {
+      "tag": "contoh_soal",
+      "patterns": [
+        "contoh soal",
+        "contoh pertanyaan",
+        "contoh hitungan",
+        "kasih contoh",
+        "minta contoh",
+        "contoh penggunaan"
+      ],
+      "responses": [
+        "Contoh: (1) Baju Rp150.000 diskon 20%, bayar berapa? (2) Beli batik Rp80.000, dijual Rp100.000. Untung atau rugi? (3) Belanja Rp47.500, bayar Rp50.000, kembaliannya?",
+        "Coba salah satu: \"Diskon 25% dari Rp80.000, hematnya berapa?\" atau \"Modal 80rb dijual 100rb, untung berapa?\"."
+      ]
+    },
+    {
+      "tag": "terima_kasih",
+      "patterns": [
+        "terima kasih",
+        "oke terima kasih",
+        "terima kasih banyak",
+        "mantap terima kasih",
+        "sip terima kasih",
+        "makasih banyak ya"
+      ],
+      "responses": [
+        "Sama-sama! Kalau mau hitung lagi, kirim saja soalnya.",
+        "Senang bisa membantu! Selamat berbelanja."
+      ]
+    },
+    {
+      "tag": "identitas",
+      "patterns": [
+        "kamu siapa",
+        "siapa namamu",
+        "nama kamu siapa",
+        "kamu bot apa",
+        "belanjabot itu apa",
+        "perkenalkan dirimu"
+      ],
+      "responses": [
+        "Aku {nama_bot}, chatbot hitung untuk pasar dan jual-beli: diskon, untung-rugi, dan kembalian.",
+        "Namaku {nama_bot}. Tugasku membantu menghitung supaya belanja dan jualanmu tidak salah hitung."
+      ]
+    },
+    {
+      "tag": "penutup",
+      "patterns": [
+        "sampai jumpa",
+        "dadah",
+        "bye",
+        "selesai",
+        "sudah cukup",
+        "cukup sekian",
+        "keluar",
+        "sampai nanti"
+      ],
+      "responses": [
+        "Sampai jumpa! Hati-hati di jalan dan selamat berbelanja.",
+        "Dadah! Kalau butuh hitung lagi, aku di sini."
+      ]
+    },
+    {
+      "tag": "tips_hemat_belanja",
+      "patterns": [
+        "tips hemat belanja",
+        "cara hemat belanja",
+        "tips belanja hemat",
+        "cara belanja hemat",
+        "tips hemat",
+        "cara berhemat",
+        "belanja biar hemat",
+        "belanja biar tidak boros",
+        "cara agar tidak boros"
+      ],
+      "responses": [
+        "Tips hemat belanja: (1) Tulis daftar belanja dan patuhi. (2) Bandingkan harga per satuan, misalnya per 100 gram, bukan harga kemasan. (3) Jangan belanja saat lapar. (4) Ambil diskon hanya untuk barang yang memang kamu butuhkan. (5) Hitung dulu harga akhir setelah diskon; aku bisa bantu, kirim saja harga dan persen diskonnya.",
+        "Biar belanja lebih hemat: tentukan batas uang sebelum berangkat, bawa uang secukupnya, bandingkan harga di dua tempat, dan cek tanggal kedaluwarsa kalau beli stok banyak."
+      ]
+    },
+    {
+      "tag": "cara_menawar",
+      "patterns": [
+        "cara menawar",
+        "tips menawar",
+        "cara menawar harga di pasar",
+        "cara tawar menawar",
+        "tips tawar menawar",
+        "menawar harga",
+        "trik menawar"
+      ],
+      "responses": [
+        "Tips menawar di pasar: (1) Cari tahu dulu harga pasarannya. (2) Mulai dari tawaran yang sedikit di bawah harga yang kamu mau, supaya ada ruang naik. (3) Bersikap ramah dan sopan. (4) Beli lebih banyak biasanya bisa minta harga lebih murah. (5) Boleh pamit kalau belum cocok, kadang penjual memanggil lagi. (6) Kalau sudah sepakat, jangan menawar lagi.",
+        "Kunci tawar-menawar: tahu harga wajar, tawar dengan senyum, dan siap pergi kalau harganya tidak cocok. Sesudah deal, hitung total dan kembaliannya; aku bisa bantu."
+      ]
+    },
+    {
+      "tag": "tips_harga_jual",
+      "patterns": [
+        "tips jualan",
+        "tips berjualan",
+        "cara menentukan harga jual",
+        "tips menentukan harga jual",
+        "cara menentukan harga",
+        "berapa untung yang wajar",
+        "tips jualan laris"
+      ],
+      "responses": [
+        "Tips menentukan harga jual: (1) Catat semua modal, termasuk kemasan, ongkos kirim, dan biaya lain. (2) Intip harga penjual lain untuk barang sejenis. (3) Tambahkan untung yang kamu inginkan di atas modal. (4) Catat penjualan supaya kelihatan untung atau ruginya. Kirim modal dan harga jualmu, nanti kuhitung untung-ruginya.",
+        "Untuk jualan, pastikan harga jual lebih besar dari modal ditambah biaya lain. Kalau harga jual sama dengan modal, hasilnya impas; kalau lebih kecil, kamu rugi. Mau coba hitung? Kirim modal dan harga jualnya."
+      ]
+    },
+    {
+      "tag": "cek_diskon_asli",
+      "patterns": [
+        "cara cek diskon asli",
+        "diskon asli atau palsu",
+        "diskon palsu",
+        "apakah diskon ini benar",
+        "tips cek harga sebelum diskon",
+        "cara tahu diskon beneran",
+        "waspada diskon"
+      ],
+      "responses": [
+        "Cara cek diskon asli: (1) Bandingkan harga akhirnya dengan toko lain, bukan hanya melihat besar persen. (2) Perhatikan harga coret; pastikan itu memang harga biasanya. (3) Hitung harga akhir setelah diskon. (4) Jangan beli hanya karena ada diskon. Kirim harga dan persen diskonnya, nanti kuhitung harga akhirnya.",
+        "Diskon besar belum tentu murah. Yang dibandingkan adalah harga akhir yang kamu bayar. Kirim harga awal dan persen diskon, aku hitungkan."
+      ]
+    },
+    {
+      "tag": "anggaran_belanja",
+      "patterns": [
+        "cara membuat anggaran belanja",
+        "tips atur uang belanja",
+        "cara mengatur uang belanja",
+        "buat daftar belanja",
+        "anggaran belanja bulanan",
+        "tips atur budget belanja",
+        "cara atur budget"
+      ],
+      "responses": [
+        "Cara mengatur anggaran belanja: (1) Catat uang masuk setiap bulan. (2) Pisahkan kebutuhan pokok dan keinginan. (3) Tetapkan batas belanja per minggu. (4) Catat pengeluaran supaya kelihatan yang boros. (5) Sisihkan tabungan di awal, bukan dari sisa. Salah satu patokan populer adalah aturan 50/30/20, lalu sesuaikan dengan kondisimu.",
+        "Mulai dari daftar belanja mingguan dan batas uang yang jelas. Setelah belanja, catat total dan hitung kembaliannya supaya tidak ada yang terlewat."
+      ]
+    },
+    {
+      "tag": "rumus_diskon",
+      "patterns": [
+        "rumus diskon",
+        "rumus menghitung diskon",
+        "rumus harga setelah diskon",
+        "cara manual hitung diskon",
+        "rumus persen diskon",
+        "rumus potongan harga",
+        "rumus hitung diskon",
+        "cara menghitung persen diskon"
+      ],
+      "responses": [
+        "Rumus diskon: potongan = persen ÷ 100 × harga awal. Harga akhir = harga awal − potongan. Contoh: Rp150.000 diskon 20% → potongan Rp30.000 → harga akhir Rp120.000. Mau coba soalmu? Kirim harga dan persen diskonnya.",
+        "Diskon dihitung dari harga awal. Potongan = persen ÷ 100 × harga, lalu harga akhir = harga − potongan. Persen diskon tidak mungkin lebih dari 100%."
+      ]
+    },
+    {
+      "tag": "rumus_untung_rugi",
+      "patterns": [
+        "rumus untung rugi",
+        "rumus menghitung untung",
+        "rumus persentase untung",
+        "apa bedanya untung dan rugi",
+        "rumus laba rugi",
+        "cara mencari persen untung"
+      ],
+      "responses": [
+        "Rumus untung-rugi: selisih = harga jual − modal. Jika selisih positif, kamu untung. Jika negatif, kamu rugi. Jika nol, impas. Persentase untung = untung ÷ modal × 100%. Contoh: modal Rp80.000, jual Rp100.000 → untung Rp20.000 (25% dari modal).",
+        "Untung terjadi kalau harga jual lebih besar dari modal, rugi kalau lebih kecil, impas kalau sama. Kirim modal dan harga jualmu, nanti kuhitung."
+      ]
+    },
+    {
+      "tag": "istilah_jual_beli",
+      "patterns": [
+        "pengertian modal",
+        "arti modal",
+        "apa itu laba",
+        "apa itu margin",
+        "apa bedanya margin dan markup",
+        "istilah jual beli",
+        "arti impas"
+      ],
+      "responses": [
+        "Istilah jual-beli: Modal = uang yang dikeluarkan untuk mendapat barang. Harga jual = harga yang dibayar pembeli. Untung (laba) = harga jual − modal. Rugi = modal lebih besar dari harga jual. Impas = harga jual sama dengan modal. Markup = untung ÷ modal × 100%. Margin = untung ÷ harga jual × 100%.",
+        "Singkatnya: untung (laba) = harga jual − modal. Markup dihitung terhadap modal, sedangkan margin dihitung terhadap harga jual, jadi angkanya berbeda untuk barang yang sama."
+      ]
+    },
+    {
+      "tag": "belanja_online_aman",
+      "patterns": [
+        "tips belanja online aman",
+        "cara belanja online yang aman",
+        "cara menghindari penipuan online",
+        "tips aman belanja online",
+        "ciri toko online terpercaya",
+        "waspada penipuan belanja online"
+      ],
+      "responses": [
+        "Tips belanja online aman: (1) Cek reputasi dan ulasan penjual. (2) Curiga pada harga yang terlalu murah. (3) Gunakan metode pembayaran resmi dari platform. (4) Simpan bukti pembayaran dan percakapan. (5) Jangan pernah membagikan kode OTP atau PIN kepada siapa pun. Setelah itu, hitung harga akhirnya; aku bisa bantu kalau ada diskon.",
+        "Sebelum membayar belanja online, periksa penjualnya, baca ulasan, dan pastikan transaksi lewat platform resmi. Hindari pindah ke chat pribadi untuk membayar ke rekening yang tidak dikenal."
+      ]
+    },
+    {
+      "tag": "tips_belanja_pasar",
+      "patterns": [
+        "tips belanja di pasar",
+        "cara belanja di pasar tradisional",
+        "tips ke pasar",
+        "jam terbaik belanja ke pasar",
+        "cara memilih sayur segar",
+        "tips belanja pasar tradisional"
+      ],
+      "responses": [
+        "Tips belanja di pasar: (1) Datang lebih pagi untuk pilihan barang yang lebih segar. (2) Keliling dulu dan bandingkan harga beberapa lapak. (3) Bawa tas belanja sendiri. (4) Siapkan uang pecahan kecil supaya mudah membayar dan menghitung kembalian. (5) Periksa timbangan dan jumlah barang sebelum membayar.",
+        "Sebelum membeli, lihat dulu beberapa lapak, pilih barang yang kondisinya baik, dan tawar dengan sopan. Setelah itu hitung total dan kembaliannya; aku bisa bantu."
+      ]
+    },
+    {
+      "tag": "cek_struk",
+      "patterns": [
+        "cara cek struk belanja",
+        "kenapa harus cek struk",
+        "salah hitung kasir",
+        "tips cek belanjaan di kasir",
+        "periksa struk belanja",
+        "harga di kasir beda dengan label"
+      ],
+      "responses": [
+        "Tips cek struk belanja: (1) Cocokkan harga di struk dengan label di rak. (2) Periksa jumlah barang dan diskon yang tertulis. (3) Hitung ulang total dan kembaliannya. (4) Kalau ada selisih, tanyakan ke kasir saat itu juga, sebelum meninggalkan toko. Kirim total belanja dan uang bayarmu kalau mau kuhitung kembaliannya.",
+        "Selalu periksa struk sebelum pergi. Kesalahan paling sering ada pada harga yang beda dari label, diskon yang tidak terpotong, atau jumlah kembalian."
+      ]
+    }
+  ]
+}
